@@ -1,0 +1,70 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-core
+  cloud:
+    #注册中心nacos
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+#        group: SEATA_GROUP
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/seata_order?allowMultiQueries=true&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    #type: com.zaxxer.hikari.HikariDataSource
+    #hikari:
+    #  ## 最小空闲连接数量
+    #  minimum-idle: 5
+    #  ## 空闲连接存活最大时间，默认600000（10分钟）
+    #  idle-timeout: 180000
+    #  ## 连接池最大连接数，默认是10
+    #  maximum-pool-size: 10
+    #  ## 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+    #  #auto-commit: true
+    #  ## 连接池母子
+    #  pool-name: MyHikariCP
+    #  ## 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+    #  max-lifetime: 1800000
+    #  ## 数据库连接超时时间,默认30秒，即30000
+    #  connection-timeout: 30000
+    #  connection-test-query: SELECT 1
+#mybatis:
+mybatis-plus:
+  type-aliases-package: com.cc.app.core.model
+  mapper-locations: classpath*:mapping/*.xml
+
+seata:
+  enabled: true
+  enableAutoDataSourceProxy: true
+  enable-auto-data-source-proxy: true
+  tx-service-group: default_tx_group
+  service:
+    vgroup-mapping:
+      default_tx_group: default
+  config:
+    type: nacos
+    nacos:
+      namespace: ""
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      username: "nacos"
+      password: "nacos"
+      data-id: seata.properties
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 127.0.0.1:8848
+      group : "SEATA_GROUP"
+      namespace: ""
+      username: "nacos"
+      password: "nacos"
+
+logging:
+  level:
+    io:
+      seata: info
