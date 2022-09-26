@@ -1,4 +1,4 @@
-package com.cc.app.core.service;
+package com.cc.app.demo.service;
 
 public class AService {
 

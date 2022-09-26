@@ -1,6 +1,6 @@
-package com.cc.app.core.service.sub;
+package com.cc.app.demo.service.sub;
 
-import com.cc.app.core.service.AService;
+import com.cc.app.demo.service.AService;
 
 public class CService {
 

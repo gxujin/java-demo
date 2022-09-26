@@ -10,6 +10,8 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>api-demo</module>
+        <module>api-demo2</module>
+        <module>api-core</module>
     </modules>
 
     <properties>
